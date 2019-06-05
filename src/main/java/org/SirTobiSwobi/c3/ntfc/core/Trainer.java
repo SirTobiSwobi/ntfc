@@ -84,7 +84,11 @@ public class Trainer {
 		if(folds==1){
 			overallSteps = allIds.length*2; //because the same documents are used for training and for evaluation purposes. 
 			refHub.getModelManager().getModelByAddress(modelId).setSteps(overallSteps);
-			(new NtfcFold(refHub, allIds, allIds, 0, modelId, trainingSession, this, configId)).start(); //only changed what fold is started.
+			if(config.getAlgorithm().equals("dai")){
+				(new DaiFold(refHub, allIds, allIds, 0, modelId, trainingSession, this, configId)).start();
+			}else{
+				(new NtfcFold(refHub, allIds, allIds, 0, modelId, trainingSession, this, configId)).start(); //only changed what fold is started.
+			}
 		}else{
 			for(int i=0; i<folds;i++){
 				int start=(allIds.length/folds)*i;
@@ -95,8 +99,12 @@ public class Trainer {
 				
 				long[] evaluationIds = Arrays.copyOfRange(allIds, start, end);
 				long[] trainingIds = computeTrainingIdsFromEvaluationIds(allIds,evaluationIds);
+				if(config.getAlgorithm().equals("dai")){
+					(new DaiFold(refHub, trainingIds, evaluationIds, i, modelId, trainingSession, this, configId)).start();
+				}else{
+					(new NtfcFold(refHub, trainingIds, evaluationIds, i, modelId, trainingSession, this, configId)).start(); //only changed what fold is started.
+				}
 				
-				(new NtfcFold(refHub, trainingIds, evaluationIds, i, modelId, trainingSession, this, configId)).start(); //only changed what fold is started.
 			}	
 		}
 		

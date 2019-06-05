@@ -23,7 +23,7 @@ public class WordMoverDistance extends DistanceMeasure {
 			B=C;
 		}
 		for(int aw=0; aw<A.length; aw++){
-			double wordDistance=10000000.0;
+			double wordDistance=Double.MAX_VALUE;
 			int ia=this.getWordEmbedding().getTermIndex(A[aw]);
 			double[] vecA = new double[this.getWordEmbedding().getDimensions()];
 			if(ia!=-1){

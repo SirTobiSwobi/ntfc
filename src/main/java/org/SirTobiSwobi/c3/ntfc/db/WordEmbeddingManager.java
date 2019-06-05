@@ -4,11 +4,11 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class WordEmbeddingManager {
-	private AVLTree<WordEmbeddingMetadata> wordEmbeddings;
+	private DataMap<WordEmbeddingMetadata> wordEmbeddings;
 	private ReferenceHub refHub;
 	
 	public WordEmbeddingManager(){
-		this.wordEmbeddings = new AVLTree<WordEmbeddingMetadata>();
+		this.wordEmbeddings = new DataMap<WordEmbeddingMetadata>();
 	}
 	
 	public long getSize(){

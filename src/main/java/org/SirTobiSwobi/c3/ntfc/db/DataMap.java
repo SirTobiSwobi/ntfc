@@ -2,30 +2,36 @@ package org.SirTobiSwobi.c3.ntfc.db;
 
 import java.security.MessageDigest;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class AVLTree<T> {
+public class DataMap<T> {
 	
-	private AVLTreeNode<T> root;
-	private long size;
+	//private AVLTreeNode<T> root;
+	//private long size;
 	private byte[] contentHash;
-	final static Logger logger = LoggerFactory.getLogger(AVLTree.class);
+	final static Logger logger = LoggerFactory.getLogger(DataMap.class);
+	
+	private HashMap<Long,T> dataMap;
 
-	public AVLTree() {
+	public DataMap() {
 		super();
-		this.size=0;
+		//this.size=0;
 		this.contentHash = new byte[32]; //SHA-256 produces 256 bit digests, what equals 32 bytes. 
+		dataMap = new HashMap<Long,T>();
 	}
 	
 	public synchronized void setContent(T content, long id){
+		/*
 		if(root==null){
 			root=new AVLTreeNode<T>(this,content,id);
 			size=1;
 		}else{
 			root.setContent(id, content);
-		}
+		}*/
+		dataMap.put(id, content);
 		try{
 		MessageDigest md = MessageDigest.getInstance("SHA-256");
 		byte[] key = content.toString().getBytes();
@@ -39,31 +45,27 @@ public class AVLTree<T> {
 		}
 	}
 	
-	public ArrayList<T> toArrayList(){
-		
+	public ArrayList<T> toArrayList(){		
 		ArrayList<T> allContent= new ArrayList<T>();
-		if(size>0){
-			root.getAllContent(allContent);
-		}
+		allContent.addAll(dataMap.values());
 		return allContent;
 		
 	}
 	
+	/*
 	public void incrementSize(){
 		size++;
-	}
+	}*/
 	
 	public long getSize() {
-		return size;
+		return (long)dataMap.size();
 	}
 
-	public T getContent(long id){
-		if(root==null){
-			return null;
-		}
-		return root.getContent(id);
+	public T getContent(long id){		
+		return dataMap.get(id);
 	}
 	
+	/*
 	protected void rebalance(long id){
 		if(!root.treeIsBalanced()){
 			AVLTreeNode<T> unbalanced = root.getUnbalancedAncestor(id);
@@ -168,52 +170,53 @@ public class AVLTree<T> {
 	public int getBalance(){
 		return root.getBalance();
 	}
-	
+	*/
 	public long getMaxId(){
-		if(root==null){
-			return 0;
-		}else{
-			return root.getMaxId();
+		ArrayList<Long> usedIds = new ArrayList<Long>();
+		usedIds.addAll(dataMap.keySet());
+		long maxId=0;
+		for(int i=0;i<usedIds.size();i++){
+			if(maxId<usedIds.get(i)){
+				maxId=usedIds.get(i);
+			}
 		}
+		return maxId;
 		
 	}
 	
 	public boolean containsId(long id){
-		if(this.size==0||root==null){
-			return false;
-		}else{
-			return root.containsId(id);
-		}		
+		return dataMap.containsKey(id);
+			
 	}
 	
 	public synchronized void deleteNode(long id){
-		if(size>0){
-			try{
-				T content = root.getContent(id);
-				MessageDigest md = MessageDigest.getInstance("SHA-256");
-				byte[] key = content.toString().getBytes();
-				byte[] hash = md.digest(key);
-				for(int i=0;i<hash.length;i++){
-					this.contentHash[i]=(byte) (this.contentHash[i]-hash[i]);
-				}
-				
-				}catch(Exception cnse){
-					logger.error("Failed to create content hash. Message: "+cnse.getLocalizedMessage());
-				}
-			root.deleteNode(id);
-			size--;
-		}	
+		try{
+			T content = dataMap.get(id);
+			MessageDigest md = MessageDigest.getInstance("SHA-256");
+			byte[] key = content.toString().getBytes();
+			byte[] hash = md.digest(key);
+			for(int i=0;i<hash.length;i++){
+				this.contentHash[i]=(byte) (this.contentHash[i]-hash[i]);
+			}
+
+		}catch(Exception cnse){
+			logger.error("Failed to create content hash. Message: "+cnse.getLocalizedMessage());
+		}
+		dataMap.remove(id);
+
 	}
 	
+	/*
 	protected AVLTreeNode<T> getRoot(){
 		return root;
+	}*/
+	
+	protected void empty(){
+		this.dataMap=new HashMap<Long,T>();
+		//this.size=0;
 	}
 	
-	protected void emptyTree(){
-		this.root=null;
-		this.size=0;
-	}
-	
+	/*
 	protected void setRoot(AVLTreeNode<T> root){
 		this.root=root;
 	}
@@ -221,20 +224,16 @@ public class AVLTree<T> {
 	public int getHeight(){
 		return root.getHeight();
 	}
-	
+	*/
 	public byte[] getContentHash(){
 		
 		return contentHash;
 	}
 	
 	public ArrayList<Long> getUsedIds(){
-		if(root==null){
-			return null;
-		}else{
-			ArrayList<Long> usedIds = new ArrayList<Long>();
-			root.populateUsedIds(usedIds);
-			return usedIds;
-		}
+		ArrayList<Long> usedIds = new ArrayList<Long>();
+		usedIds.addAll(dataMap.keySet());
+		return usedIds;
 	}
 
 }

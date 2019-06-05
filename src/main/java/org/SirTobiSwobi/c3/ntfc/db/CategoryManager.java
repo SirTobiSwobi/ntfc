@@ -4,16 +4,16 @@ import java.util.ArrayList;
 
 public class CategoryManager {
 	
-	private AVLTree<Category> categories;
-	private AVLTree<Relationship> relationships;
-	private AVLTree<ArrayList<Relationship>> fromIndex;
-	private AVLTree<ArrayList<Relationship>> toIndex;
+	private DataMap<Category> categories;
+	private DataMap<Relationship> relationships;
+	private DataMap<ArrayList<Relationship>> fromIndex;
+	private DataMap<ArrayList<Relationship>> toIndex;
 
 	public CategoryManager(){
-		this.categories = new AVLTree<Category>();
-		this.relationships = new AVLTree<Relationship>();
-		this.fromIndex = new AVLTree<ArrayList<Relationship>>();
-		this.toIndex = new AVLTree<ArrayList<Relationship>>();
+		this.categories = new DataMap<Category>();
+		this.relationships = new DataMap<Relationship>();
+		this.fromIndex = new DataMap<ArrayList<Relationship>>();
+		this.toIndex = new DataMap<ArrayList<Relationship>>();
 	}
 	
 	public long getSize(){
@@ -157,16 +157,16 @@ public class CategoryManager {
 	}
 	
 	public synchronized void deleteAllCategories(){
-		this.categories = new AVLTree<Category>();
-		this.relationships = new AVLTree<Relationship>();
-		this.fromIndex = new AVLTree<ArrayList<Relationship>>();
-		this.toIndex = new AVLTree<ArrayList<Relationship>>();
+		this.categories = new DataMap<Category>();
+		this.relationships = new DataMap<Relationship>();
+		this.fromIndex = new DataMap<ArrayList<Relationship>>();
+		this.toIndex = new DataMap<ArrayList<Relationship>>();
 	}
 	
 	public synchronized void deleteAllRelationships(){
-		this.relationships = new AVLTree<Relationship>();
-		this.fromIndex = new AVLTree<ArrayList<Relationship>>();
-		this.toIndex = new AVLTree<ArrayList<Relationship>>();
+		this.relationships = new DataMap<Relationship>();
+		this.fromIndex = new DataMap<ArrayList<Relationship>>();
+		this.toIndex = new DataMap<ArrayList<Relationship>>();
 	}
 	
 	public boolean containsCategory(long id){

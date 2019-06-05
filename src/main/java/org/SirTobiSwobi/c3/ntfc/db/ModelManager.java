@@ -3,13 +3,13 @@ package org.SirTobiSwobi.c3.ntfc.db;
 import java.util.ArrayList;
 
 public class ModelManager {
-	private AVLTree<Model> models;
+	private DataMap<Model> models;
 	private ReferenceHub refHub;
 	private boolean trainingInProgress;
 	
 	public ModelManager() {
 		super();
-		this.models = new AVLTree<Model>();
+		this.models = new DataMap<Model>();
 		this.refHub = null;
 		this.trainingInProgress=false;
 	}

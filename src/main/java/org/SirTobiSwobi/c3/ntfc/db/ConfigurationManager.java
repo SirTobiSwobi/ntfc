@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class ConfigurationManager {
 	
-	AVLTree<Configuration> configurations;
+	DataMap<Configuration> configurations;
 
 	public ConfigurationManager() {
-		configurations = new AVLTree<Configuration>();
+		configurations = new DataMap<Configuration>();
 	}
 	
 	public long getSize(){

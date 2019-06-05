@@ -3,16 +3,16 @@ package org.SirTobiSwobi.c3.ntfc.db;
 import java.util.ArrayList;
 
 public class CategorizationManager {
-	protected AVLTree<Categorization> assignments;
-	protected AVLTree<ArrayList<Categorization>> documentIndex;
-	protected AVLTree<ArrayList<Categorization>> categoryIndex;
+	protected DataMap<Categorization> assignments;
+	protected DataMap<ArrayList<Categorization>> documentIndex;
+	protected DataMap<ArrayList<Categorization>> categoryIndex;
 	protected ReferenceHub refHub;
 
 	public CategorizationManager() {
 		super();
-		this.assignments = new AVLTree<Categorization>();
-		this.documentIndex=new AVLTree<ArrayList<Categorization>>();
-		this.categoryIndex=new AVLTree<ArrayList<Categorization>>();
+		this.assignments = new DataMap<Categorization>();
+		this.documentIndex=new DataMap<ArrayList<Categorization>>();
+		this.categoryIndex=new DataMap<ArrayList<Categorization>>();
 	}
 	
 	public ReferenceHub getRefHub() {

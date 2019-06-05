@@ -5,17 +5,17 @@ import java.util.ArrayList;
 import org.SirTobiSwobi.c3.ntfc.core.Utilities;
 
 public class TargetFunctionManager {
-	protected AVLTree<Assignment> assignments;
-	protected AVLTree<ArrayList<Assignment>> documentIndex;
-	protected AVLTree<ArrayList<Assignment>> categoryIndex;
+	protected DataMap<Assignment> assignments;
+	protected DataMap<ArrayList<Assignment>> documentIndex;
+	protected DataMap<ArrayList<Assignment>> categoryIndex;
 	protected ReferenceHub refHub;
 	
 	public TargetFunctionManager() {
 		super();
 		this.refHub = null;
-		this.assignments=new AVLTree<Assignment>();
-		this.documentIndex=new AVLTree<ArrayList<Assignment>>();
-		this.categoryIndex=new AVLTree<ArrayList<Assignment>>();
+		this.assignments=new DataMap<Assignment>();
+		this.documentIndex=new DataMap<ArrayList<Assignment>>();
+		this.categoryIndex=new DataMap<ArrayList<Assignment>>();
 	}
 	
 	

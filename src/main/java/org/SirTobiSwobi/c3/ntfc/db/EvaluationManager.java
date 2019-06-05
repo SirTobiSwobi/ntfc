@@ -3,13 +3,13 @@ package org.SirTobiSwobi.c3.ntfc.db;
 import java.util.ArrayList;
 
 public class EvaluationManager {
-	private AVLTree<TrainingSession> trainingSessions;
+	private DataMap<TrainingSession> trainingSessions;
 	private ReferenceHub refHub;
 	private boolean trainingInProgress;
 	
 	public EvaluationManager() {
 		super();
-		this.trainingSessions = new AVLTree<TrainingSession>();
+		this.trainingSessions = new DataMap<TrainingSession>();
 		this.refHub = null;
 		this.trainingInProgress=false;
 	}

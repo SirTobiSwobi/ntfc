@@ -6,10 +6,10 @@ import org.SirTobiSwobi.c3.ntfc.db.Document;
 
 public class DocumentManager {
 	
-	private AVLTree<Document> documents;
+	private DataMap<Document> documents;
 	
 	public DocumentManager(){
-		documents = new AVLTree<Document>();
+		documents = new DataMap<Document>();
 	}
 	
 	public long getSize(){

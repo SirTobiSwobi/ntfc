@@ -4,18 +4,18 @@ import java.util.ArrayList;
 
 public class AVLTreeNode<T> {
 	private AVLTreeNode<T> left, right, parent;
-	private AVLTree<T> tree;
+	private DataMap<T> tree;
 	private T content;
 	private long index;
 	
-	public AVLTreeNode(AVLTree<T> tree, T content, long index) {
+	public AVLTreeNode(DataMap<T> tree, T content, long index) {
 		super();
 		this.tree = tree;
 		this.content = content;
 		this.index = index;
 	}
 
-	public AVLTreeNode(AVLTreeNode<T> parent, AVLTree<T> tree, T content, long index) {
+	public AVLTreeNode(AVLTreeNode<T> parent, DataMap<T> tree, T content, long index) {
 		super();
 		this.parent = parent;
 		this.tree = tree;
@@ -72,7 +72,7 @@ public class AVLTreeNode<T> {
 			right.getAllContent(allContent);
 		}
 	}
-
+/*
 	public synchronized void setContent(long id, T content){
 		if(id==this.index){
 			this.content=content;
@@ -90,7 +90,7 @@ public class AVLTreeNode<T> {
 			right.setContent(id,content);
 		}
 	}
-
+*/
 	public AVLTreeNode<T> getLeft() {
 		return left;
 	}
@@ -201,7 +201,7 @@ public class AVLTreeNode<T> {
 		}
 		return index;
 	}
-	
+	/*
 	public synchronized void deleteNode(long id){
 		if(id==this.index){
 			//to do: Delete me. Different if I'm the root or not. 
@@ -277,7 +277,7 @@ public class AVLTreeNode<T> {
 			right.deleteNode(id);
 		}
 	}
-	
+	*/
 	private AVLTreeNode<T> findMinAntecessor(){
 		AVLTreeNode<T> minId=this;
 		if(left!=null){

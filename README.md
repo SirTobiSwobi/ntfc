@@ -18,3 +18,5 @@ Version change log:
 - 1.0.1: Merged AVLTree and Utility functions from API v 1.0.5 to support further development
 - 1.1.0: Implemented explanations for all categorizations
 - 1.1.1: Updated JavaScript Library to common core API with specific extensions
+- 1.1.2: Fixed bug in algorithm selection during self-evaluation
+- 1.2.0: Changed data structures to maps to increase computation throughput

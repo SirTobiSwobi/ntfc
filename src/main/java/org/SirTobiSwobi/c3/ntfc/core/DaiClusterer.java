@@ -44,7 +44,7 @@ public class DaiClusterer {
 				clusters.add(new DaiCluster(vecA));
 				
 			}else{
-				double minDistance = 1000000.0;
+				double minDistance = Double.MAX_VALUE;
 				int minIndex = 0;
 				for(int j=0; j<clusters.size(); j++){
 					double distance = Utilities.cosineDistance(vecA, clusters.get(j).getAverage());
