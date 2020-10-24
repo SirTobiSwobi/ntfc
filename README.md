@@ -1,4 +1,4 @@
-#NTFC
+# NTFC
 This repository contains a contribution of the PhD Thesis *Bootstrapping Explainable Text Categorization in Emergent Knowledge-Domains* by Tobias Eljasik-Swoboda submitted to the University of Hagen, Germany on November 30th, 2020. Date of oral examiniation: March 2nd, 2021. 
 
 The NTFC (No Target Function Classifier) microservice is implementing the classifier trainer API of the athlete/trainer pattern. As the name suggests it is an unsupervised classifier that only requires word embeddings to perform text categorization.
