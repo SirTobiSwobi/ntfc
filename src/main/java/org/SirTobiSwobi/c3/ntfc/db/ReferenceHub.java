@@ -13,10 +13,11 @@ public class ReferenceHub {
 	private WordEmbeddingManager wordEmbeddingManager;
 	private FileSystemManager fileSystemManager;
 	private WordEmbedding activeWordEmbedding;
+	private String wordEmbeddingsLocation;
 	
 	public ReferenceHub(CategoryManager categoryManager, DocumentManager documentManager,
 			TargetFunctionManager targetFunctionManager, ConfigurationManager configurationManager, ModelManager modelManager, 
-			CategorizationManager categorizationManager, EvaluationManager evaluationManager, Model activeModel, WordEmbeddingManager wordEmbeddingManager) {
+			CategorizationManager categorizationManager, EvaluationManager evaluationManager, Model activeModel, WordEmbeddingManager wordEmbeddingManager, String wordEmbeddingsLocation) {
 		super();
 		this.categoryManager = categoryManager;
 		this.documentManager = documentManager;
@@ -29,6 +30,7 @@ public class ReferenceHub {
 		this.needsRetraining = false;
 		this.wordEmbeddingManager = wordEmbeddingManager;
 		this.fileSystemManager = new FileSystemManager();
+		this.wordEmbeddingsLocation = wordEmbeddingsLocation;
 		this.activeWordEmbedding = null;
 	}
 	public CategoryManager getCategoryManager() {
@@ -103,10 +105,11 @@ public class ReferenceHub {
 	public void setActiveWordEmbedding(WordEmbedding activeWordEmbedding) {
 		this.activeWordEmbedding = activeWordEmbedding;
 	}
-	
-	
-	
-	
-	
-	
+	public String getWordEmbeddingsLocation() {
+		return wordEmbeddingsLocation;
+	}
+	public void setWordEmbeddingsLocation(String wordEmbeddingsLocation) {
+		this.wordEmbeddingsLocation = wordEmbeddingsLocation;
+	}
+
 }

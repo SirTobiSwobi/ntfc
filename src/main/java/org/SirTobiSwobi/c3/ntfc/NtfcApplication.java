@@ -90,7 +90,7 @@ public class NtfcApplication extends Application<NtfcConfiguration> {
 		EvaluationManager evalMan = new EvaluationManager();
 		Model activeModel = null;
 		WordEmbeddingManager weMan = new WordEmbeddingManager();
-		ReferenceHub refHub = new ReferenceHub(catMan, docMan, tfMan, confMan, modMan, cznMan, evalMan, activeModel, weMan);
+		ReferenceHub refHub = new ReferenceHub(catMan, docMan, tfMan, confMan, modMan, cznMan, evalMan, activeModel, weMan, configuration.getWordEmbeddingsLocation());
 		tfMan.setRefHub(refHub);
 		cznMan.setRefHub(refHub);
 		evalMan.setRefHub(refHub);
@@ -194,7 +194,7 @@ public class NtfcApplication extends Application<NtfcConfiguration> {
 				200, 
 				218317, 
 				"Skip-Gram", 
-				"C:\\wordembeddings\\skip-gram-wiki1stbill.txt");
+				refHub.getWordEmbeddingsLocation()+"skip-gram-wiki1stbill.txt");
 		refHub.getWordEmbeddingManager().setWordEmbedding(wordEmbedding); //the actual file must be in the file system!
 		Configuration config = new Configuration(0,1, true, 0.1, SelectionPolicy.MacroaverageF1, "ntfc", "WMD", 1, 1);
 		refHub.getConfigurationManager().setConfiguration(config);

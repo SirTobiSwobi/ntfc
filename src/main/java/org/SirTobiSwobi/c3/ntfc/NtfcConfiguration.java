@@ -32,6 +32,9 @@ public class NtfcConfiguration extends Configuration {
 	private String runType;
 	@NotEmpty
 	private String debugExamples;
+	@NotEmpty
+	private String wordEmbeddingsLocation;
+	
 	
 	@Valid
 	@NotNull
@@ -139,8 +142,20 @@ public class NtfcConfiguration extends Configuration {
 	}
 
 	@JsonProperty("jerseyClient")
-	    public JerseyClientConfiguration getJerseyClientConfiguration() {
-	        return jerseyClientConfiguration;
-	    }
+	public JerseyClientConfiguration getJerseyClientConfiguration() {
+	    return jerseyClientConfiguration;
+	}
+
+	@JsonProperty
+	public String getWordEmbeddingsLocation() {
+		return wordEmbeddingsLocation;
+	}
+
+	@JsonProperty
+	public void setWordEmbeddingsLocation(String wordEmbeddingsLocation) {
+		this.wordEmbeddingsLocation = wordEmbeddingsLocation;
+	}
+	
+	
 	
 }

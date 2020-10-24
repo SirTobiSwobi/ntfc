@@ -49,8 +49,10 @@ public class DaiThread extends CategorizationThread {
 						refHub.getCategorizationManager().setCategorization(czn);
 					}else{
 						String explanation = "The document is considered to belong to category \""+cat.getLabel()+"\", because the words making up the document were "
-								+ "grouped in "+clusters.size()+" clusters of similar words. One of these clusters was similar enough to this category, that it was assigned to it."
-								+ "Similarity is measured by leveraging information learned from "+weMeta.getModelName()+" available at /wordembeddings/"+config.getWordEmbeddingId();
+								+ "grouped in "+clusters.size()+" groups. At least one of these word groups was similar enough in meaning to the words describing to this category \""+cat.getLabel()+"\". "
+								+ "This created a likelihood of "+probability+" to belong to this category. "
+								+ "The likelihood has to be at least "+assignmentThreshold+" to be assigned to this category. "
+								+ "Similarity is measured by using information learned from "+weMeta.getModelName()+" available at /wordembeddings/"+config.getWordEmbeddingId();
 						refHub.getCategorizationManager().addCategorizationWithoutId(document.getId(), cat.getId(), probability, explanation);
 					}
 					if(includeImplicits){

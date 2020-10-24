@@ -25,7 +25,7 @@ public class Evaluation {
 		CategorizationManager cznMan = new CategorizationManager();
 		EvaluationManager evaluMan=null;
 		Model activeModel = null;
-		this.refHub = new ReferenceHub(catMan, docMan, evalMan, confMan, modMan, cznMan, evaluMan, activeModel,null); //Every evaluation has it's own reference Hub. Data from the evaluation is copied to it. 
+		this.refHub = new ReferenceHub(catMan, docMan, evalMan, confMan, modMan, cznMan, evaluMan, activeModel,null, refHub.getWordEmbeddingsLocation()); //Every evaluation has it's own reference Hub. Data from the evaluation is copied to it. 
 		evalMan.setRefHub(refHub);
 		cznMan.setRefHub(refHub);
 		

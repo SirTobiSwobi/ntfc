@@ -58,6 +58,7 @@ configOptions: Algorith can be NTFC or Dai, Distance Measure can be WMD or BAM
 archetype: Classifier Trainer
 runType:  trainer
 debugExamples: false
+wordEmbeddingsLocation: 'C:\\wordembeddings\\' #file system location to store word embeddings. Suggestion for Unix: '/opt/wordembeddings/'
 server:
   applicationConnectors:
   - type: http

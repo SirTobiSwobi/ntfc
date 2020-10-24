@@ -59,9 +59,11 @@ public class NtfcThread extends CategorizationThread{
 			double probability = 1.0-(minDistance[n]/maxDistance[n]);
 			if(minIndex[n]!=-1&&probability>assignmentThreshold){
 				if(!refHub.getCategorizationManager().containsCategorizationOf(document.getId(), categories[minIndex[n]].getId())){
-					String explanation = "The document is considered to belong to category \""+categories[minIndex[n]].getLabel()+"\", because the words making up the document were "
-							+ "semantically similar to to the category when using the "+config.getDistanceMeasure()+" distance measure. "
-							+ "Similarity is measured by leveraging information learned from "+weMeta.getModelName()+" available at /wordembeddings/"+config.getWordEmbeddingId();
+					String explanation = "The document is considered to belong to category \""+categories[minIndex[n]].getLabel()+"\", because the words making up the document are "
+							+ "similar enough in meaning to the words describing category \""+categories[minIndex[n]].getLabel()+"\". "
+							+ "This created a likelihood of "+probability+" to belong to this category. The likelihood has to be at least "+assignmentThreshold
+							+ " to be assigned to this category."
+							+ "Similarity is measured by using information learned from "+weMeta.getModelName()+" available at /wordembeddings/"+config.getWordEmbeddingId();
 					refHub.getCategorizationManager().addCategorizationWithoutId(document.getId(), categories[minIndex[n]].getId(), probability, explanation);
 					usedIndeces.add(minIndex[n]);
 				}else if(refHub.getCategorizationManager().getCategorizationWithDocAndCat(document.getId(), categories[minIndex[n]].getId()).getProbability()<probability){
