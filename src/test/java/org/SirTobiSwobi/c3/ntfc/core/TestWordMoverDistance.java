@@ -14,7 +14,7 @@ public class TestWordMoverDistance {
 
 	@Before
 	public void setUp() throws Exception {
-		wordEmbedding = WordEmbedding.buildFromLocalFile("/opt/wordembeddings/skip-gram-wiki1stbill.txt");
+		wordEmbedding = WordEmbedding.buildFromLocalFile("C:\\wordembeddings\\glove-wiki1stbill.txt");
 		wmd = new WordMoverDistance(wordEmbedding);
 	}
 

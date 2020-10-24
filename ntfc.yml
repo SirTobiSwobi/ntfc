@@ -53,11 +53,18 @@ calls: ['DELETE  /categories ',
 algorithm: NTFC using WMD and BAM. Alternatively Dai's algorithm.
 phases: 1 to 3
 outputFormat: Document to category likelihoods 
-configuration: Will be the concatenation of other actual config parameters.
-configOptions: tbd.
+configuration: common C3 configuration options, word embedding, algorithm, distance measure, and assignments per document
+configOptions: Algorith can be NTFC or Dai, Distance Measure can be WMD or BAM
 archetype: Classifier Trainer
 runType:  trainer
 debugExamples: false
+server:
+  applicationConnectors:
+  - type: http
+    port: 8080	#Here you can specify the service port of this NTFC instance. One can communicate with it through this port.
+  adminConnectors:
+  - type: http 
+    port: 8081 #Here you can specify the admin port of the NTFC instance
 #Jersey client settings
 jerseyClient:
   #The maximum idle time for a connection

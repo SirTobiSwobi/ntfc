@@ -6,7 +6,7 @@
   <name>ntfc</name>
   <description>Classifier athlete and trainer microservice implementing the C3 API. Implementation of the word embedding based no target function classifier which works in an unsupervised fashion. </description>
   <properties>
-  	<dropwizard.version>1.3.5</dropwizard.version>
+  	<dropwizard.version>2.0.0</dropwizard.version>
   </properties>
   <dependencies>
   	<dependency>

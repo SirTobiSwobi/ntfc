@@ -185,7 +185,7 @@ public class NtfcApplication extends Application<NtfcConfiguration> {
 				MlrType.WordEmbedding, 
 				"Wed Oct 10 16:28:09 CEST 2018", 
 				"200 dimensions. Forgot the rest.", 
-				"Can be part of WE-SVM", 
+				"Can be part of NTFC", 
 				"English", 
 				"Wikipedia", 
 				"skip-gram-wiki1stbill.txt", 
@@ -194,7 +194,7 @@ public class NtfcApplication extends Application<NtfcConfiguration> {
 				200, 
 				218317, 
 				"Skip-Gram", 
-				"/opt/wordembeddings/skip-gram-wiki1stbill.txt");
+				"C:\\wordembeddings\\skip-gram-wiki1stbill.txt");
 		refHub.getWordEmbeddingManager().setWordEmbedding(wordEmbedding); //the actual file must be in the file system!
 		Configuration config = new Configuration(0,1, true, 0.1, SelectionPolicy.MacroaverageF1, "ntfc", "WMD", 1, 1);
 		refHub.getConfigurationManager().setConfiguration(config);
